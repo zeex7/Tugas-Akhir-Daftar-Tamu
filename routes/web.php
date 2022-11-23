@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TamuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+Route::resource('/',TamuController::class);
+Route::get('/{id:tamu}/hapus', [TamuController::class, 'hapus']);
 
 Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('dashboard', function () {
-    return view('dashboard.index');
+    return view('layouts.main');
 });
